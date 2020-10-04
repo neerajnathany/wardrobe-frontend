@@ -1,0 +1,191 @@
+@import "normalize";
+@import "colors";
+@import "variables";
+@import "fonts";
+
+body{
+	font-family: 'Circular Std', 'SF Pro Display';
+	background-color: $dark;
+	color: $light-white;
+	font-weight: 300;
+}
+
+.header{
+	background-color: #000;
+	padding: 2*$std-padding 2.5*$std-padding;
+	&-title{
+		text-transform: uppercase;
+		letter-spacing: 2px;
+	}
+	&-user{
+		float: right;
+	}
+}
+
+.main{
+	width: 100%;
+	padding: 4*$std-padding;
+	&-content{
+		display: block;
+	}
+	&-title{
+		font-size: 2em;
+		font-weight: 700;
+		margin-bottom: 4*$std-padding;
+		color: $white;
+	}
+	@media screen and (min-width: 700px) {		
+		padding: 6*$std-padding 4*$std-padding;
+		&-title{
+			margin-bottom: 5*$std-padding;
+		}
+		&-content{
+			vertical-align: top;
+			display: inline-block;
+			width: 75%;
+		}
+	}
+}
+
+.panel{
+	display: block;
+	margin-bottom: 6*$std-padding;
+	&-title{
+		color: $white;
+		font-size: 1.2em;
+		margin-bottom: 2*$std-padding;
+		font-weight: 700;
+	}
+	&-button{
+		font-family: inherit;
+		display: inline-block;
+		width: 46%;
+		height: 46%;
+		background-color: $gray;
+		border-radius: $std-padding;
+		border: none;
+		color: $light-white;
+		text-transform: uppercase;
+		font-size: 0.8em;
+		letter-spacing: 1px;
+		padding: 2*$std-padding;
+		&:not(:last-child){
+			margin-right: 6%;
+		}
+		&.true{
+			border: 1px solid $yellow;
+			.panel-icon{
+				fill: $yellow;
+			}
+		}
+		&.false:hover{
+			background-color: $lightest-white;
+		}
+		span{
+			vertical-align: middle;
+		}
+	}
+	&-icon{
+		width: 1.5em;
+		margin-right: 0.75*$std-padding;
+		vertical-align: bottom;
+	}
+	&-notif{
+		margin-bottom: 4*$std-padding;
+		padding: 2*$std-padding 2.5*$std-padding;
+		border-radius: $std-padding;
+		background-color:$blue;
+		line-height: 1.35em;
+		b{
+			font-weight: 800;
+			color: $white;
+		}
+	}
+	@media screen and (min-width: 700px) {
+		display: inline-block;
+		width: 25%;
+		vertical-align: top;
+		padding: 0 4*$std-padding 0 0;
+		margin-bottom: 0;
+		&-button{
+			width: 9em;
+			height: 9em;
+			padding: 0;
+			span{
+				display: block;
+			}
+			&:not(:last-child){
+				margin-right: 2.5*$std-padding;
+				margin-bottom: 1.75*$std-padding;
+			}
+		}
+		&-icon{
+			width: 1.75em;
+			margin-bottom: 0.75*$std-padding;
+			margin-right: 0;
+		}
+		&-notif{
+			width: 90%;
+		}
+	}
+}
+
+.group{
+	margin-bottom: 3*$std-padding;
+	&-title{
+		color: $white;
+		font-size: 1.2em;
+		font-weight: 500;
+		margin-bottom: 2*$std-padding;
+	}
+	@media screen and (min-width: 700px) {
+		margin-bottom: 4*$std-padding;
+	}
+}
+
+.friend{
+	display: inline-block;
+	padding: $std-padding 1.25*$std-padding;
+	border-radius: 0.75*$std-padding;
+	//background-color: $gray;
+	margin: 0 1.5*$std-padding 1.5*$std-padding 0;
+	cursor: default;
+	&:hover{
+		background-color:$lightest-white;
+	}
+	&-name{
+		margin-right: 1.75*$std-padding;
+	}
+	&-proxy{
+		color: $lighter-white;
+	}
+	@media screen and (min-width: 700px) {
+		padding: $std-padding 1.5*$std-padding;
+		&-name{
+			margin-right: 2.5*$std-padding;
+		}
+	}
+}
+
+.cloth{
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 2.5em 2em 0;
+	transition: all 0.07s ease-in-out;
+	&-tile{
+		width: 7em;
+		height: 3em;
+		border-radius: 0.75*$std-padding;
+		margin-bottom: 0.75*$std-padding;
+	}
+	&-form{
+		margin-bottom: 0.2*$std-padding;
+		display: block;
+	}
+	&-name{
+		font-size: 0.8em;
+	}
+	&:hover{
+		transform: scale(1.05);
+	}
+}

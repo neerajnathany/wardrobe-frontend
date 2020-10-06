@@ -90,30 +90,34 @@ class App extends Component {
             </header>
             <div className="main">
                 <aside className="panel">
-                    <h4 className="panel-title">Filters</h4>
-                    <button onClick={(e)=>this.setState({tagFilters: [], lenFilter: '', ageFilter: '', formFilter: ''})}>Clear all</button>
-                    {cats.map(each => {
-                        return (
-                            <div><h6>{each}</h6>
-                            {this.state.clothes.filter(i=>{
-                                return i.category === each;
-                            }).map(c=>{
-                                return c.form
-                            }).filter((f, index, self)=>{
-                                return self.indexOf(f) === index;
-                            }).map((u,order) => {
-                                return (
-                                    <button className={"panel-button "+ (this.state.formFilter === u)} key={order} onClick={this.onFormFilter} value={u}>
-                                        <span>{u}</span>
-                                    </button>
-                                )
-                            })}</div>
-                        )
-                    })
-
-                    }
-                    <div className="panel-group">
-                        <h5 className="panel-group-title">Tags</h5>
+                    <div className="panel-head">
+                        <h4 className="panel-title">Filters</h4>
+                        {Boolean(this.state.tagFilters.length || this.state.lenFilter || this.state.ageFilter || this.state.formFilter) && 
+                        <button className="panel-clear" onClick={(e)=>this.setState({tagFilters: [], lenFilter: '', ageFilter: '', formFilter: ''})}>Clear all</button>}
+                    </div>
+                    <div className="panel-box">
+                        {cats.map((each,num) => {
+                            return (
+                                <div key={num}><h6 className="panel-box-title">{each}</h6>
+                                {this.state.clothes.filter(i=>{
+                                    return i.category === each;
+                                }).map(c=>{
+                                    return c.form
+                                }).filter((f, index, self)=>{
+                                    return self.indexOf(f) === index;
+                                }).map((u,order) => {
+                                    return (
+                                        <button className={"panel-button "+ (this.state.formFilter === u)} key={order} onClick={this.onFormFilter} value={u}>
+                                            <span>{u}</span>
+                                        </button>
+                                    )
+                                })}</div>
+                            )
+                        })
+                        }
+                    </div>
+                    <div className="panel-box">
+                        <h5 className="panel-box-title">Tags</h5>
                         {this.state.tags.map((each, index) => {
                             return (
                                 <button className={"panel-button " + this.state.tagFilters.includes(each)} key={index} onClick={this.onTagFilter} value={each}>
@@ -122,8 +126,8 @@ class App extends Component {
                             )
                         })}
                     </div>
-                    <div className="panel-group">
-                        <h5 className="panel-group-title">Lengths</h5>
+                    <div className="panel-box">
+                        <h5 className="panel-box-title">Lengths</h5>
                         {length.map((each, index) => {
                             return (
                                 <button className={"panel-button " + (this.state.lenFilter === each)} key={index} onClick={this.onLenFilter} value={each}>
@@ -132,8 +136,8 @@ class App extends Component {
                             )
                         })}
                     </div>
-                    <div className="panel-group">
-                        <h5 className="panel-group-title">Ages</h5>
+                    <div className="panel-box">
+                        <h5 className="panel-box-title">Age</h5>
                         {age.map((each,index) => {
                             return(
                                 <button className={"panel-button " + (this.state.ageFilter === each)} key={index} onClick={this.onAgeFilter} value={each}>

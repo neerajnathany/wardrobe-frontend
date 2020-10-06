@@ -2,6 +2,7 @@
 @import "colors";
 @import "variables";
 @import "fonts";
+@import "elements";
 
 body{
 	font-family: 'Circular Std', 'SF Pro Display';
@@ -42,7 +43,7 @@ body{
 		&-content{
 			vertical-align: top;
 			display: inline-block;
-			width: 75%;
+			width: 71%;
 		}
 	}
 }
@@ -50,23 +51,28 @@ body{
 .panel{
 	display: block;
 	margin-bottom: 6*$std-padding;
+	&-head{
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		margin-bottom: 2.5*$std-padding;
+	}
 	&-title{
 		color: $white;
 		font-size: 1.2em;
-		margin-bottom: 2*$std-padding;
 		font-weight: 700;
 	}
 	&-button{
 		font-family: inherit;
 		display: inline-block;
-		background-color: $gray;
+		background-color: $grey;
 		border-radius: 0.75*$std-padding;
 		border: none;
 		color: $light-white;
 		text-transform: uppercase;
 		font-size: 0.72em;
 		letter-spacing: 1px;
-		padding: 1.2*$std-padding 1.65*$std-padding;
+		padding: 0.8*$std-padding 1.3*$std-padding;
 		margin: 0 5% 4% 0;
 		&.true{
 			background-color: $black;
@@ -76,7 +82,7 @@ body{
 			}
 		}
 		&.false:hover{
-			background-color: $lightest-white;
+			background-color: $lighter-white;
 		}
 		span{
 			vertical-align: middle;
@@ -98,11 +104,26 @@ body{
 			color: $white;
 		}
 	}
+	&-box{
+		background-color: $black;
+		margin-bottom: 2.75*$std-padding;
+		border-radius: 2*$std-padding;
+		padding: 1.8*$std-padding 3*$std-padding 1.25*$std-padding;
+		&-title{
+			margin-top: 2%;
+			margin-bottom: 4%;
+			font-size: 0.75em;
+		}
+	}
+	&-clear{
+		@extend %text-button;
+		font-size: 0.7em;
+	}
 	@media screen and (min-width: 700px) {
 		display: inline-block;
-		width: 25%;
+		width: 29%;
 		vertical-align: top;
-		padding: 0 4*$std-padding 0 0;
+		padding: 0 3.5% 0 0;
 		margin-bottom: 0;
 		&-button{
 			margin-right: 1.5*$std-padding;
@@ -115,6 +136,12 @@ body{
 		}
 		&-notif{
 			width: 90%;
+		}
+		&-box{
+			&-title{
+				margin-top: 0.75*$std-padding;
+				margin-bottom: 1.25*$std-padding;
+			}
 		}
 	}
 }
@@ -144,7 +171,6 @@ body{
 	display: inline-block;
 	padding: $std-padding 1.25*$std-padding;
 	border-radius: 0.75*$std-padding;
-	//background-color: $gray;
 	margin: 0 1.5*$std-padding 1.5*$std-padding 0;
 	cursor: default;
 	&:hover{

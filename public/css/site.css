@@ -250,7 +250,7 @@ input[type="radio"] {
  * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
  *    (include `-moz` to future-proof).
  */
-input[type="search"] {
+input[type=search] {
   -webkit-appearance: textfield;
   /* 1 */
   -moz-box-sizing: content-box;
@@ -354,6 +354,16 @@ textarea {
   font-weight: 300;
   font-style: normal; }
 
+.panel-clear {
+  text-decoration: none;
+  font-family: inherit;
+  padding: 0;
+  text-transform: uppercase;
+  font-weight: 300;
+  background: none;
+  border: none;
+  color: #ffffffbb; }
+
 body {
   font-family: 'Circular Std', 'SF Pro Display';
   background-color: #1f1f1f;
@@ -387,15 +397,19 @@ body {
       .main-content {
         vertical-align: top;
         display: inline-block;
-        width: 75%; } }
+        width: 71%; } }
 
 .panel {
   display: block;
   margin-bottom: 48px; }
+  .panel-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 20px; }
   .panel-title {
     color: #fff;
     font-size: 1.2em;
-    margin-bottom: 16px;
     font-weight: 700; }
   .panel-button {
     font-family: inherit;
@@ -407,7 +421,7 @@ body {
     text-transform: uppercase;
     font-size: 0.72em;
     letter-spacing: 1px;
-    padding: 9.6px 13.2px;
+    padding: 6.4px 10.4px;
     margin: 0 5% 4% 0; }
     .panel-button.true {
       background-color: #000;
@@ -415,7 +429,7 @@ body {
       .panel-button.true .panel-icon {
         fill: #ffae00; }
     .panel-button.false:hover {
-      background-color: #ffffff33; }
+      background-color: #ffffff66; }
     .panel-button span {
       vertical-align: middle; }
   .panel-icon {
@@ -431,12 +445,23 @@ body {
     .panel-notif b {
       font-weight: 800;
       color: #fff; }
+  .panel-box {
+    background-color: #000;
+    margin-bottom: 22px;
+    border-radius: 16px;
+    padding: 14.4px 24px 10px; }
+    .panel-box-title {
+      margin-top: 2%;
+      margin-bottom: 4%;
+      font-size: 0.75em; }
+  .panel-clear {
+    font-size: 0.7em; }
   @media screen and (min-width: 700px) {
     .panel {
       display: inline-block;
-      width: 25%;
+      width: 29%;
       vertical-align: top;
-      padding: 0 32px 0 0;
+      padding: 0 3.5% 0 0;
       margin-bottom: 0; }
       .panel-button {
         margin-right: 12px;
@@ -446,7 +471,10 @@ body {
         margin-bottom: 6px;
         margin-right: 0; }
       .panel-notif {
-        width: 90%; } }
+        width: 90%; }
+      .panel-box-title {
+        margin-top: 6px;
+        margin-bottom: 10px; } }
 
 .group {
   margin-bottom: 24px; }

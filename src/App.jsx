@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import Group from './components/Group';
-import Filter from './components/Filter';
-import {length, collar, age} from './constants';
+import {length, age, cats} from './constants';
 import axios from 'axios';
 
 class App extends Component {
 
-    state = { clothes: [], categories: [], tags: [], fClothes: [], tagFilters: [] };
-    filters = [length, age];
-    
+    state = { clothes: [], categories: [], tags: [], fClothes: [], tagFilters: [], lenFilter: '', ageFilter: '', formFilter: '' };
+
     componentDidMount(){
         this.getList();
     }
@@ -24,24 +22,23 @@ class App extends Component {
     }
 
     getCategories = () => {
+        var freq = {};
 		var categories = this.state.clothes.map(each => {
 			return each.category
 		});
-		var freq = {};
 		categories.forEach(category => { freq[category] = 0 });
 		var uniques = categories.filter(category => {
 			return ++freq[category] === 1;
-		})
-		uniques.sort((a, b) => {
+		}).sort((a, b) => {
 			return freq[b] - freq[a];
 		})
-		this.setState({ categories: uniques });
+		this.setState({categories: uniques});
     };
     
     getTags = () => {
         var tags = [];
         this.state.clothes.forEach( each => {
-            tags = tags.concat(each.tags)
+            tags = [...tags, ...(each.tags)];
         });
         this.setState({tags: tags.filter((each, index, self) => {
             return self.indexOf(each) === index;
@@ -49,25 +46,39 @@ class App extends Component {
     }
 
     onTagFilter = (e) => {
-        // e.currentTarget.classList.toggle('active');
-        // var fClothes = this.state.fClothes.filter(each => {
-        //     return each.tags.includes(e.currentTarget.value);
-        // })
-        // this.setState({fClothes: fClothes});
-
         if (!this.state.tagFilters.includes(e.currentTarget.value)){
             this.setState({tagFilters : [...this.state.tagFilters, e.currentTarget.value]});
         }
         else{
             this.setState({tagFilters : this.state.tagFilters.filter(each => {return each !== e.currentTarget.value})});
+        }        
+    }
+
+    onLenFilter = (e) => {
+        if(this.state.lenFilter !== e.currentTarget.value){
+            this.setState({lenFilter: e.currentTarget.value});
         }
-        // this.setState({fClothes: this.state.fClothes.filter(each => {
-        //     return this.state.tagFilters.every(tag=>{
-        //         return each.tags.includes(tag);
-        //     });
-        // })});
-        //console.log(this.state.fClothes);
-        
+        else{
+            this.setState({lenFilter: ''});
+        }
+    }
+
+    onAgeFilter = (e) => {
+        if(this.state.ageFilter !== e.currentTarget.value){
+            this.setState({ageFilter: e.currentTarget.value});
+        }
+        else{
+            this.setState({ageFilter: ''});
+        }
+    }
+
+    onFormFilter = (e) => {
+        if(this.state.formFilter !== e.currentTarget.value){
+            this.setState({formFilter: e.currentTarget.value});
+        }
+        else{
+            this.setState({formFilter: ''});
+        }
     }
 
     render() { 
@@ -80,21 +91,60 @@ class App extends Component {
             <div className="main">
                 <aside className="panel">
                     <h4 className="panel-title">Filters</h4>
-                    {this.state.tags.map((each, index) => {
+                    <button onClick={(e)=>this.setState({tagFilters: [], lenFilter: '', ageFilter: '', formFilter: ''})}>Clear all</button>
+                    {cats.map(each => {
+                        return (
+                            <div><h6>{each}</h6>
+                            {this.state.clothes.filter(i=>{
+                                return i.category === each;
+                            }).map(c=>{
+                                return c.form
+                            }).filter((f, index, self)=>{
+                                return self.indexOf(f) === index;
+                            }).map((u,order) => {
+                                return (
+                                    <button className={"panel-button "+ (this.state.formFilter === u)} key={order} onClick={this.onFormFilter} value={u}>
+                                        <span>{u}</span>
+                                    </button>
+                                )
+                            })}</div>
+                        )
+                    })
+
+                    }
+                    <div className="panel-group">
+                        <h5 className="panel-group-title">Tags</h5>
+                        {this.state.tags.map((each, index) => {
                             return (
                                 <button className={"panel-button " + this.state.tagFilters.includes(each)} key={index} onClick={this.onTagFilter} value={each}>
                                     <span>{each}</span>
                                 </button>
                             )
-                        })
-                    }
-                    {this.filters.map((each, index) => {
-                            return <Filter filter={each} key={index}/>
-                        })
-                    }
+                        })}
+                    </div>
+                    <div className="panel-group">
+                        <h5 className="panel-group-title">Lengths</h5>
+                        {length.map((each, index) => {
+                            return (
+                                <button className={"panel-button " + (this.state.lenFilter === each)} key={index} onClick={this.onLenFilter} value={each}>
+                                    <span>{each}</span>
+                                </button>
+                            )
+                        })}
+                    </div>
+                    <div className="panel-group">
+                        <h5 className="panel-group-title">Ages</h5>
+                        {age.map((each,index) => {
+                            return(
+                                <button className={"panel-button " + (this.state.ageFilter === each)} key={index} onClick={this.onAgeFilter} value={each}>
+                                    <span>{each}</span>
+                                </button>
+                            )
+                        })}
+                    </div>
                 </aside>
                 <div className="main-content">
-                    <h2 className="main-title">Your Wardrobe</h2>
+                <h2 className="main-title">My Wardrobe ({this.state.fClothes.length})</h2>
                     {this.state.categories.map( (each, index) => {
                         return (
                             <Group 
@@ -102,14 +152,26 @@ class App extends Component {
                                 key={index}
                                 clothes={
                                     this.state.fClothes.filter(e => {
-                                        return (e.category === each && this.state.tagFilters.every(tag=>{
-                                            return e.tags.includes(tag);
-                                        }))
+                                        return (
+                                            e.category === each && 
+                                            this.state.tagFilters.every(tag=>{
+                                                return e.tags.includes(tag);
+                                            }) &&
+                                            length[e.length].includes(this.state.lenFilter) &&
+                                            age[e.age].includes(this.state.ageFilter) &&
+                                            (this.state.formFilter ? e.form ? e.form.includes(this.state.formFilter) : false : true)
+                                        )
                                     })
                                 }
                             />
                         )
                     })}
+                    {/* 
+                        <Group category="Discards" class="off" clothes={this.state.clothes.filter(e => {
+                                return e.tags.includes('Pseudo Discard')
+                            })}
+                        />
+                    */}
                 </div>
             </div>
         </div>

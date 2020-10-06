@@ -30,7 +30,7 @@ body{
 	}
 	&-title{
 		font-size: 2em;
-		font-weight: 800;
+		font-weight: 700;
 		margin-bottom: 4*$std-padding;
 		color: $white;
 	}
@@ -60,14 +60,14 @@ body{
 		font-family: inherit;
 		display: inline-block;
 		background-color: $gray;
-		border-radius: $std-padding;
+		border-radius: 0.75*$std-padding;
 		border: none;
 		color: $light-white;
 		text-transform: uppercase;
-		font-size: 0.75em;
+		font-size: 0.72em;
 		letter-spacing: 1px;
-		padding: 1.5*$std-padding 2*$std-padding;
-		margin: 0 6% 5% 0;
+		padding: 1.2*$std-padding 1.65*$std-padding;
+		margin: 0 5% 4% 0;
 		&.true{
 			background-color: $black;
 			color: $yellow;
@@ -105,8 +105,8 @@ body{
 		padding: 0 4*$std-padding 0 0;
 		margin-bottom: 0;
 		&-button{
-			margin-right: 1.75*$std-padding;
-			margin-bottom: 1.75*$std-padding;
+			margin-right: 1.5*$std-padding;
+			margin-bottom: 1.5*$std-padding;
 		}
 		&-icon{
 			width: 1.75em;
@@ -129,6 +129,14 @@ body{
 	}
 	@media screen and (min-width: 700px) {
 		margin-bottom: 4*$std-padding;
+	}
+	&.off{
+		background-color: $black;
+		padding: 2em 2em 0;
+		border-radius: 2*$std-padding;
+		.group-title{
+			color: $lighter-white;
+		}
 	}
 }
 
@@ -163,8 +171,8 @@ body{
 	transition: all 0.07s ease-in-out;
 	position: relative;
 	&-tile{
-		width: 10em;
-		height: 6em;
+		width: 8.5em;
+		height: 5em;
 		border-radius: 0.75*$std-padding;
 	}
 	&-form{

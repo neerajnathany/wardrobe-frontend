@@ -30,7 +30,7 @@ body{
 	}
 	&-title{
 		font-size: 2em;
-		font-weight: 700;
+		font-weight: 800;
 		margin-bottom: 4*$std-padding;
 		color: $white;
 	}
@@ -59,21 +59,18 @@ body{
 	&-button{
 		font-family: inherit;
 		display: inline-block;
-		width: 46%;
-		height: 46%;
 		background-color: $gray;
 		border-radius: $std-padding;
 		border: none;
 		color: $light-white;
 		text-transform: uppercase;
-		font-size: 0.8em;
+		font-size: 0.75em;
 		letter-spacing: 1px;
-		padding: 2*$std-padding;
-		&:not(:last-child){
-			margin-right: 6%;
-		}
+		padding: 1.5*$std-padding 2*$std-padding;
+		margin: 0 6% 5% 0;
 		&.true{
-			border: 1px solid $yellow;
+			background-color: $black;
+			color: $yellow;
 			.panel-icon{
 				fill: $yellow;
 			}
@@ -108,16 +105,8 @@ body{
 		padding: 0 4*$std-padding 0 0;
 		margin-bottom: 0;
 		&-button{
-			width: 9em;
-			height: 9em;
-			padding: 0;
-			span{
-				display: block;
-			}
-			&:not(:last-child){
-				margin-right: 2.5*$std-padding;
-				margin-bottom: 1.75*$std-padding;
-			}
+			margin-right: 1.75*$std-padding;
+			margin-bottom: 1.75*$std-padding;
 		}
 		&-icon{
 			width: 1.75em;
@@ -135,8 +124,8 @@ body{
 	&-title{
 		color: $white;
 		font-size: 1.2em;
-		font-weight: 500;
-		margin-bottom: 2*$std-padding;
+		font-weight: 700;
+		margin-bottom: 3*$std-padding;
 	}
 	@media screen and (min-width: 700px) {
 		margin-bottom: 4*$std-padding;
@@ -167,16 +156,16 @@ body{
 	}
 }
 
-.cloth{
+.item{
 	display: inline-block;
 	vertical-align: top;
-	margin: 0 2.5em 2em 0;
+	margin: 0 1.7em 1.7em 0;
 	transition: all 0.07s ease-in-out;
+	position: relative;
 	&-tile{
-		width: 7em;
-		height: 3em;
+		width: 10em;
+		height: 6em;
 		border-radius: 0.75*$std-padding;
-		margin-bottom: 0.75*$std-padding;
 	}
 	&-form{
 		margin-bottom: 0.2*$std-padding;
@@ -184,6 +173,14 @@ body{
 	}
 	&-name{
 		font-size: 0.8em;
+		position: absolute;
+		bottom: 0.6*$std-padding;
+		left: 0.6*$std-padding;
+		z-index: 2;
+		padding: $std-padding*0.4 $std-padding*0.5;
+		border-radius: $std-padding*0.6;
+		background-color: rgba($dark,0.75);
+
 	}
 	&:hover{
 		transform: scale(1.05);

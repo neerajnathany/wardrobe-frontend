@@ -98,7 +98,7 @@ class App extends Component {
                     <div className="panel-box">
                         {cats.map((each,num) => {
                             return (
-                                <div key={num}><h6 className="panel-box-title">{each}</h6>
+                                <div className="panel-box-group" key={num}><h6 className="panel-box-title">{each}</h6>
                                 {this.state.clothes.filter(i=>{
                                     return i.category === each;
                                 }).map(c=>{

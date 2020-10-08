@@ -14,7 +14,7 @@ class Group extends Component {
 					return (
 						<div className="item" key={String(each._id)}>
 							<div className="item-tile" style={{backgroundColor: each.color.pHex}}></div>
-							<span className="item-name">{each.brand}</span>
+							{each.brand ? <span className="item-name">{each.brand}</span> : null}
 						</div>
 					)
 				})}

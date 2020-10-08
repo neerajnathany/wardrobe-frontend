@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Group from './components/Group';
+import Notification from './components/Notification';
 import {length, age, cats} from './constants';
 import axios from 'axios';
 
@@ -90,6 +91,7 @@ class App extends Component {
             </header>
             <div className="main">
                 <aside className="panel">
+                    <Notification  />
                     <div className="panel-head">
                         <h4 className="panel-title">Filters</h4>
                         {Boolean(this.state.tagFilters.length || this.state.lenFilter || this.state.ageFilter || this.state.formFilter) && 

@@ -16,8 +16,8 @@ class App extends Component {
         const response = await axios.create({
 			baseURL: 'http://localhost:5000',
         }).get('/');
-        this.setState({ clothes: response.data});
-        this.setState({ fClothes: this.state.clothes.filter(e => {return !e.tags.includes('Pseudo Discard')})});
+        this.setState({ clothes: response.data.filter(e => {return !e.tags.includes('Pseudo Discard')})});
+        this.setState({ fClothes: this.state.clothes});
         this.getCategories();
         this.getTags();
     }
@@ -47,39 +47,32 @@ class App extends Component {
     }
 
     onTagFilter = (e) => {
-        if (!this.state.tagFilters.includes(e.currentTarget.value)){
-            this.setState({tagFilters : [...this.state.tagFilters, e.currentTarget.value]});
-        }
-        else{
-            this.setState({tagFilters : this.state.tagFilters.filter(each => {return each !== e.currentTarget.value})});
-        }        
+        this.setState({
+            tagFilters: !this.state.tagFilters.includes(e.currentTarget.value) ? 
+            [...this.state.tagFilters, e.currentTarget.value] : this.state.tagFilters.filter(each => {return each !== e.currentTarget.value})
+        }, () => {
+            this.setFilterClothes();
+        })       
     }
 
-    onLenFilter = (e) => {
-        if(this.state.lenFilter !== e.currentTarget.value){
-            this.setState({lenFilter: e.currentTarget.value});
-        }
-        else{
-            this.setState({lenFilter: ''});
-        }
+    onStdFilter = (e) => {
+        var filterName = e.currentTarget.dataset.filter + 'Filter';
+        this.setState({
+            [filterName]: this.state[filterName] !== e.currentTarget.value ? e.currentTarget.value : '' 
+        }, () => {
+            this.setFilterClothes();
+        })
     }
 
-    onAgeFilter = (e) => {
-        if(this.state.ageFilter !== e.currentTarget.value){
-            this.setState({ageFilter: e.currentTarget.value});
-        }
-        else{
-            this.setState({ageFilter: ''});
-        }
-    }
-
-    onFormFilter = (e) => {
-        if(this.state.formFilter !== e.currentTarget.value){
-            this.setState({formFilter: e.currentTarget.value});
-        }
-        else{
-            this.setState({formFilter: ''});
-        }
+    setFilterClothes = (e) => {
+        this.setState({fClothes: this.state.clothes.filter(e=>{
+            return (length[e.length].includes(this.state.lenFilter) && 
+            age[e.age].includes(this.state.ageFilter) &&
+            (this.state.formFilter ? e.form ? e.form.includes(this.state.formFilter) : false : true) &&
+            this.state.tagFilters.every(tag=>{
+                return e.tags.includes(tag);
+            }));
+        })})
     }
 
     render() { 
@@ -95,7 +88,7 @@ class App extends Component {
                     <div className="panel-head">
                         <h4 className="panel-title">Filters</h4>
                         {Boolean(this.state.tagFilters.length || this.state.lenFilter || this.state.ageFilter || this.state.formFilter) && 
-                        <button className="panel-clear" onClick={(e)=>this.setState({tagFilters: [], lenFilter: '', ageFilter: '', formFilter: ''})}>Clear all</button>}
+                        <button className="panel-extra" onClick={(e)=>this.setState({tagFilters: [], lenFilter: '', ageFilter: '', formFilter: '', fClothes: this.state.clothes})}>Clear all</button>}
                     </div>
                     <div className="panel-box">
                         {cats.map((each,num) => {
@@ -109,7 +102,7 @@ class App extends Component {
                                     return self.indexOf(f) === index;
                                 }).map((u,order) => {
                                     return (
-                                        <button className={"panel-button "+ (this.state.formFilter === u)} key={order} onClick={this.onFormFilter} value={u}>
+                                        <button className={"panel-button "+ (this.state.formFilter === u)} key={order} onClick={this.onStdFilter} value={u} data-filter="form">
                                             <span>{u}</span>
                                         </button>
                                     )
@@ -132,7 +125,7 @@ class App extends Component {
                         <h5 className="panel-box-title">Lengths</h5>
                         {length.map((each, index) => {
                             return (
-                                <button className={"panel-button " + (this.state.lenFilter === each)} key={index} onClick={this.onLenFilter} value={each}>
+                                <button className={"panel-button " + (this.state.lenFilter === each)} key={index} onClick={this.onStdFilter} value={each} data-filter="len">
                                     <span>{each}</span>
                                 </button>
                             )
@@ -142,7 +135,7 @@ class App extends Component {
                         <h5 className="panel-box-title">Age</h5>
                         {age.map((each,index) => {
                             return(
-                                <button className={"panel-button " + (this.state.ageFilter === each)} key={index} onClick={this.onAgeFilter} value={each}>
+                                <button className={"panel-button " + (this.state.ageFilter === each)} key={index} onClick={this.onStdFilter} value={each} data-filter="age">
                                     <span>{each}</span>
                                 </button>
                             )
@@ -150,28 +143,23 @@ class App extends Component {
                     </div>
                 </aside>
                 <div className="main-content">
-                <h2 className="main-title">My Wardrobe ({this.state.fClothes.length})</h2>
-                    {this.state.categories.map( (each, index) => {
+                    <div className="main-head">
+                        <h2 className="main-title">My Wardrobe</h2>
+                        {this.state.fClothes.length ? <span className="main-extra">{this.state.fClothes.length} result(s) found</span> : null}
+                    </div>
+                    {this.state.fClothes.length ? (this.state.categories.map( (each, index) => {
                         return (
                             <Group 
                                 category={each}
                                 key={index}
                                 clothes={
                                     this.state.fClothes.filter(e => {
-                                        return (
-                                            e.category === each && 
-                                            this.state.tagFilters.every(tag=>{
-                                                return e.tags.includes(tag);
-                                            }) &&
-                                            length[e.length].includes(this.state.lenFilter) &&
-                                            age[e.age].includes(this.state.ageFilter) &&
-                                            (this.state.formFilter ? e.form ? e.form.includes(this.state.formFilter) : false : true)
-                                        )
+                                        return e.category === each
                                     })
                                 }
                             />
                         )
-                    })}
+                    })) : <h5 className="group-title">No results found</h5>}
                     {/* 
                         <Group category="Discards" class="off" clothes={this.state.clothes.filter(e => {
                                 return e.tags.includes('Pseudo Discard')

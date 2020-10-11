@@ -354,7 +354,7 @@ textarea {
   font-weight: 300;
   font-style: normal; }
 
-.panel-clear {
+.panel-extra {
   text-decoration: none;
   font-family: inherit;
   padding: 0;
@@ -384,15 +384,23 @@ body {
   padding: 32px; }
   .main-content {
     display: block; }
+  .main-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 32px; }
   .main-title {
     font-size: 2em;
     font-weight: 700;
-    margin-bottom: 32px;
     color: #fff; }
+  .main-extra {
+    font-size: 1em;
+    font-weight: 300;
+    color: #ffffff66; }
   @media screen and (min-width: 700px) {
     .main {
       padding: 48px 32px; }
-      .main-title {
+      .main-head {
         margin-bottom: 40px; }
       .main-content {
         vertical-align: top;
@@ -446,7 +454,7 @@ body {
     .panel-notif b {
       color: #fff; }
     .panel-notif-icon {
-      margin: 0 2px 0 8px; }
+      margin-left: 8px; }
     .panel-notif-text {
       font-size: 0.9em;
       line-height: 1.3em;
@@ -460,7 +468,7 @@ body {
       margin-bottom: 16px; }
     .panel-box-title {
       font-size: 0.75em; }
-  .panel-clear {
+  .panel-extra {
     font-size: 0.7em; }
   @media screen and (min-width: 700px) {
     .panel {

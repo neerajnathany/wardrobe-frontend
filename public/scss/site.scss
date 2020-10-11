@@ -29,15 +29,25 @@ body{
 	&-content{
 		display: block;
 	}
+	&-head{
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		margin-bottom: 4*$std-padding;
+	}
 	&-title{
 		font-size: 2em;
 		font-weight: 700;
-		margin-bottom: 4*$std-padding;
 		color: $white;
+	}
+	&-extra{
+		font-size: 1em;
+		font-weight: 300;
+		color: $lighter-white;
 	}
 	@media screen and (min-width: 700px) {		
 		padding: 6*$std-padding 4*$std-padding;
-		&-title{
+		&-head{
 			margin-bottom: 5*$std-padding;
 		}
 		&-content{
@@ -104,7 +114,7 @@ body{
 			color: $white;
 		}
 		&-icon{
-			margin: 0 0.25*$std-padding 0 $std-padding;
+			margin-left: $std-padding;
 		}
 		&-text{
 			font-size: 0.9em;
@@ -124,7 +134,7 @@ body{
 			font-size: 0.75em;
 		}
 	}
-	&-clear{
+	&-extra{
 		@extend %text-button;
 		font-size: 0.7em;
 	}

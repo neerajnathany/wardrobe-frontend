@@ -87,9 +87,6 @@ body{
 		&.true{
 			background-color: $black;
 			color: $yellow;
-			.panel-icon{
-				fill: $yellow;
-			}
 		}
 		&.false:hover{
 			background-color: $lighter-white;
@@ -97,11 +94,6 @@ body{
 		span{
 			vertical-align: middle;
 		}
-	}
-	&-icon{
-		width: 1.5em;
-		margin-right: 0.75*$std-padding;
-		vertical-align: bottom;
 	}
 	&-notif{
 		background-color:$black;
@@ -175,29 +167,6 @@ body{
 	}
 }
 
-.friend{
-	display: inline-block;
-	padding: $std-padding 1.25*$std-padding;
-	border-radius: 0.75*$std-padding;
-	margin: 0 1.5*$std-padding 1.5*$std-padding 0;
-	cursor: default;
-	&:hover{
-		background-color:$lightest-white;
-	}
-	&-name{
-		margin-right: 1.75*$std-padding;
-	}
-	&-proxy{
-		color: $lighter-white;
-	}
-	@media screen and (min-width: 700px) {
-		padding: $std-padding 1.5*$std-padding;
-		&-name{
-			margin-right: 2.5*$std-padding;
-		}
-	}
-}
-
 .item{
 	display: inline-block;
 	vertical-align: top;
@@ -226,5 +195,17 @@ body{
 	}
 	&:hover{
 		transform: scale(1.05);
+	}
+}
+
+.empty{
+	text-align: center;
+	padding: 15vh 0;
+	&-icon{
+		fill: $grey;
+	}
+	&-text{
+		line-height: 1.6em;
+		color: $lighter-white;
 	}
 }

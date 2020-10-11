@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Group from './components/Group';
 import Notification from './components/Notification';
+import Empty from './components/Empty';
 import {length, age, cats} from './constants';
 import axios from 'axios';
 
@@ -145,7 +146,7 @@ class App extends Component {
                 <div className="main-content">
                     <div className="main-head">
                         <h2 className="main-title">My Wardrobe</h2>
-                        {this.state.fClothes.length ? <span className="main-extra">{this.state.fClothes.length} result(s) found</span> : null}
+                        <span className="main-extra">{this.state.fClothes.length} result(s) found</span>
                     </div>
                     {this.state.fClothes.length ? (this.state.categories.map( (each, index) => {
                         return (
@@ -159,7 +160,7 @@ class App extends Component {
                                 }
                             />
                         )
-                    })) : <h5 className="group-title">No results found</h5>}
+                    })) : <Empty />}
                     {/* 
                         <Group category="Discards" class="off" clothes={this.state.clothes.filter(e => {
                                 return e.tags.includes('Pseudo Discard')

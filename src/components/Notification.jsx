@@ -13,7 +13,6 @@ class Notification extends Component {
         const response = await axios.create({
 			baseURL: 'http://localhost:5000',
 		}).get('/weather');
-		console.log(response.data);
         this.setState({temp: response.data.temp, desc: response.data.desc, icon: response.data.icon});
     }
 
@@ -21,7 +20,7 @@ class Notification extends Component {
 		return ( 
 			<div className="panel-notif">
 				<img className="panel-notif-icon" src={this.iconUrl + this.state.icon + ".png"} alt={this.state.desc}/>
-				<span className="panel-notif-text">It's <b>{Math.round(this.state.temp)}°C</b> with <b>{this.state.desc}</b>. Dress accordingly!</span>
+				<span className="panel-notif-text"><b>{Math.round(this.state.temp)}°C</b> with <b>{this.state.desc}</b>. Dress accordingly!</span>
 			</div>
 		 );
 	}

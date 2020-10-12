@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import Group from './components/Group';
 import Notification from './components/Notification';
 import Empty from './components/Empty';
+import ItemView from './components/ItemView';
 import {length, age, cats} from './constants';
 import axios from 'axios';
 
 class App extends Component {
 
-    state = { clothes: [], categories: [], tags: [], fClothes: [], tagFilters: [], lenFilter: '', ageFilter: '', formFilter: '' };
+    state = { clothes: [], categories: [], tags: [], fClothes: [], tagFilters: [], lenFilter: '', ageFilter: '', formFilter: '', selectedItem: null };
 
     componentDidMount(){
         this.getList();
@@ -76,6 +77,14 @@ class App extends Component {
         })})
     }
 
+    showItem = (item) => {
+        this.setState({selectedItem:item});
+    }
+
+    clearItem = () => {
+        this.setState({selectedItem:null});
+    }
+
     render() { 
         return ( 
             <div className="App">
@@ -83,7 +92,7 @@ class App extends Component {
                 <span className="header-title">Cobalt</span>
                 <span className="header-user">Neeraj Nathany</span>
             </header>
-            <div className="main">
+            <main className="main">
                 <aside className="panel">
                     <Notification  />
                     <div className="panel-head">
@@ -146,7 +155,7 @@ class App extends Component {
                 <div className="main-content">
                     <div className="main-head">
                         <h2 className="main-title">My Wardrobe</h2>
-                        <span className="main-extra">{this.state.fClothes.length} result(s) found</span>
+                        <span className="main-extra">{this.state.fClothes.length} result(s)</span>
                     </div>
                     {this.state.fClothes.length ? (this.state.categories.map( (each, index) => {
                         return (
@@ -158,9 +167,11 @@ class App extends Component {
                                         return e.category === each
                                     })
                                 }
+                                showItem = {this.showItem}
                             />
                         )
                     })) : <Empty />}
+                    {this.state.selectedItem ? <ItemView item={this.state.selectedItem} clearItem={this.clearItem}/> : <ItemView class="inactive"/>}
                     {/* 
                         <Group category="Discards" class="off" clothes={this.state.clothes.filter(e => {
                                 return e.tags.includes('Pseudo Discard')
@@ -168,7 +179,7 @@ class App extends Component {
                         />
                     */}
                 </div>
-            </div>
+            </main>
         </div>
         );
     }

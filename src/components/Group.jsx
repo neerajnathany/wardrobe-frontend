@@ -12,7 +12,7 @@ class Group extends Component {
 					return b.fitting - a.fitting
 				}).map((each,i,self) => {
 					return (
-						<div className="item" key={String(each._id)}>
+						<div className="item" key={String(each._id)} onClick = {() => this.props.showItem(each)}>
 							<div className="item-tile" style={{backgroundColor: each.color.pHex}}></div>
 							{each.brand ? <span className="item-name">{each.brand}</span> : null}
 						</div>

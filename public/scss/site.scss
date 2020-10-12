@@ -3,6 +3,7 @@
 @import "variables";
 @import "fonts";
 @import "elements";
+@import "components";
 
 body{
 	font-family: 'Circular Std', 'SF Pro Display';
@@ -26,6 +27,7 @@ body{
 .main{
 	width: 100%;
 	padding: 4*$std-padding;
+	box-sizing: inherit;
 	&-content{
 		display: block;
 	}
@@ -102,11 +104,9 @@ body{
 		border-radius: $std-padding;
 		display: flex;
 		align-items: center;
+		padding-left: $std-padding;
 		b{
 			color: $white;
-		}
-		&-icon{
-			margin-left: $std-padding;
 		}
 		&-text{
 			font-size: 0.9em;
@@ -173,6 +173,7 @@ body{
 	margin: 0 1.5em 1.5em 0;
 	transition: all 0.07s ease-in-out;
 	position: relative;
+	cursor: pointer;
 	&-tile{
 		width: 8.5em;
 		height: 5em;
@@ -183,29 +184,13 @@ body{
 		display: block;
 	}
 	&-name{
-		font-size: 0.8em;
-		position: absolute;
+		@extend %box-tag;
 		bottom: 0.6*$std-padding;
 		left: 0.6*$std-padding;
-		z-index: 2;
-		padding: $std-padding*0.4 $std-padding*0.5;
-		border-radius: $std-padding*0.6;
+		z-index: 1;
 		background-color: rgba($dark,0.75);
-
 	}
 	&:hover{
 		transform: scale(1.05);
-	}
-}
-
-.empty{
-	text-align: center;
-	padding: 15vh 0;
-	&-icon{
-		fill: $grey;
-	}
-	&-text{
-		line-height: 1.6em;
-		color: $lighter-white;
 	}
 }

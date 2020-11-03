@@ -35,7 +35,6 @@
         &-tile{
             border-radius: $std-padding;
             width: 7em;
-            border: 1px solid $dark;
         }
         &-detail{
             margin-left: 2*$std-padding;
@@ -72,6 +71,55 @@
                     padding-bottom: 0;
                 }
             }
+        }
+    }
+}
+
+
+.home{
+    padding: 24vh 0;
+    height: 100%;
+    background-color: $black;
+    text-align: center;
+    &-header{
+        width: 60%;
+        margin: 0 auto;
+    }
+    &-title{
+        font-size: 5em;
+        font-weight: 800;
+        color: $white;
+        letter-spacing: -3px;
+    }
+    &-name{
+        // border: 2px solid $cobalt;
+        display: inline-block;
+        font-size: 1.2em;
+        // color: $cobalt;
+        letter-spacing: -5px;
+        margin-bottom: 3*$std-padding;
+        padding: 3*$std-padding 4*$std-padding 1.5*$std-padding 3.75*$std-padding;
+        border-radius: 2.5*$std-padding;
+        background-color: $grey;
+    }
+    &-highlight{
+        color: $cobalt;
+    }
+    &-cta{
+        display: inline-block;
+        background-color: $cobalt;
+        padding: $std-padding 1.9*$std-padding;
+        letter-spacing: -0.5px;
+        color: $white;
+        border: none;
+        text-decoration: none;
+        font-family: inherit;
+        border-radius: 0.75*$std-padding;
+        font-weight: 600;
+        margin-top: 4*$std-padding;
+        font-size: 1.3em;
+        &:hover{
+            background-color: darken($cobalt,7.5%);
         }
     }
 }

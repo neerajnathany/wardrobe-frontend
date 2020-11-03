@@ -11,7 +11,7 @@ class Notification extends Component {
 
 	getWeather = async () => {
         const response = await axios.create({
-			baseURL: 'http://localhost:5000',
+			baseURL: 'https://cobalt-backend.herokuapp.com/',
 		}).get('/weather');
         this.setState({temp: response.data.temp, desc: response.data.desc, icon: response.data.icon});
     }

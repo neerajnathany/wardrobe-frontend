@@ -3,6 +3,7 @@ import Group from './components/Group';
 import Notification from './components/Notification';
 import Empty from './components/Empty';
 import ItemView from './components/ItemView';
+import Link from './components/Link';
 import {length, age, cats} from './constants';
 import axios from 'axios';
 
@@ -89,7 +90,7 @@ class Wardrobe extends Component {
         return ( 
             <div className="wardrobe">
             <header className="header">
-                <span className="header-title">Cobalt</span>
+                <Link className="header-title" href="/">Cobalt</Link>
                 <span className="header-user">Neeraj Nathany</span>
             </header>
             <main className="main">

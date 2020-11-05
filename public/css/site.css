@@ -383,26 +383,27 @@ textarea {
   position: fixed;
   background-color: rgba(255, 255, 255, 0.97);
   overflow: hidden;
-  bottom: 32px;
-  right: 32px;
+  bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 2;
-  border-radius: 12px;
+  border-radius: 12px 12px 0 0;
   padding: 1em;
   overflow: hidden;
   box-shadow: 2px 4px 18px 0 rgba(0, 0, 0, 0.6);
   cursor: default;
-  transform: scale(1, 1);
-  transform-origin: 100% 100%;
-  transition: all 0.08s ease-in-out; }
+  transition: all 0.08s ease-in-out;
+  transform: translate(0, 0); }
   .pop-box.inactive {
-    transform: scale(0, 0); }
+    transform: translate(0, 100%); }
 
 .pop-item {
   display: flex; }
   .pop-item-tile {
-    border-radius: 8px;
-    width: 7em; }
+    width: 25%;
+    border-radius: 8px; }
   .pop-item-detail {
+    width: 75%;
     margin-left: 16px;
     padding: 1px 2px 0 0; }
     .pop-item-detail h6 {
@@ -426,26 +427,39 @@ textarea {
   .pop-item-table tr:last-child td {
     padding-bottom: 0; }
 
+@media screen and (min-width: 700px) {
+  .pop-box {
+    border-radius: 12px;
+    bottom: 32px;
+    right: 32px;
+    transform: scale(1, 1);
+    transform-origin: 100% 100%; }
+    .pop-box.inactive {
+      transform: scale(0, 0); }
+  .pop-item-detail {
+    width: 7em; }
+  .pop-item-detail {
+    width: auto; } }
+
 .home {
-  padding: 24vh 0;
-  height: 100%;
+  padding-top: 16vh;
+  height: 100vh;
   background-color: #000;
-  text-align: center; }
+  text-align: center;
+  box-sizing: inherit; }
   .home-header {
-    width: 60%;
-    margin: 0 auto; }
-  .home-title {
-    font-size: 5em;
+    width: 70%;
+    margin: 0 auto;
+    font-size: 3.5em;
     font-weight: 800;
     color: #fff;
-    letter-spacing: -3px; }
+    letter-spacing: -4px; }
   .home-name {
     display: inline-block;
     font-size: 1.2em;
-    letter-spacing: -5px;
     margin-bottom: 24px;
-    padding: 24px 32px 12px 30px;
-    border-radius: 20px;
+    padding: 16px 20px 12px;
+    border-radius: 16px;
     background-color: #383838; }
   .home-highlight {
     color: #2190ff; }
@@ -461,9 +475,18 @@ textarea {
     border-radius: 6px;
     font-weight: 600;
     margin-top: 32px;
-    font-size: 1.3em; }
+    font-size: 1.25em; }
     .home-cta:hover {
       background-color: #007dfa; }
+  @media screen and (min-width: 700px) {
+    .home {
+      padding-top: 20vh; }
+      .home-header {
+        width: 60%;
+        font-size: 5em; }
+      .home-name {
+        padding: 24px 32px 12px;
+        border-radius: 20px; } }
 
 body {
   font-family: 'Circular Std', 'SF Pro Display';
@@ -476,7 +499,9 @@ body {
   padding: 16px 20px; }
   .header-title {
     text-transform: uppercase;
-    letter-spacing: 2px; }
+    letter-spacing: 2px;
+    text-decoration: none;
+    color: inherit; }
   .header-user {
     float: right; }
 
@@ -532,7 +557,7 @@ body {
     font-size: 0.72em;
     letter-spacing: 1px;
     padding: 6.4px 10.4px;
-    margin: 2% 2.75% 0 0; }
+    margin: 2.5% 2.5% 0 0; }
     .panel-button.true {
       background-color: #000;
       color: #ffae00; }
@@ -550,6 +575,8 @@ body {
     padding-left: 8px; }
     .panel-notif b {
       color: #fff; }
+    .panel-notif-icon {
+      width: 50px; }
     .panel-notif-text {
       font-size: 0.9em;
       line-height: 1.3em;
@@ -586,7 +613,7 @@ body {
     color: #fff;
     font-size: 1.2em;
     font-weight: 700;
-    margin-bottom: 1.2em; }
+    margin-bottom: 1em; }
   .group.off {
     background-color: #000;
     padding: 2em 2em 0;
@@ -597,14 +624,19 @@ body {
 .item {
   display: inline-block;
   vertical-align: top;
-  margin: 0 1.5em 1.5em 0;
   transition: all 0.07s ease-in-out;
   position: relative;
-  cursor: pointer; }
+  cursor: pointer;
+  border-radius: 5.2px;
+  overflow: hidden;
+  width: 30%;
+  height: 3.8em;
+  margin: 0 5% 5% 0; }
+  .item:nth-child(3n) {
+    margin-right: 0; }
   .item-tile {
-    width: 8.5em;
-    height: 5em;
-    border-radius: 6px; }
+    width: 100%;
+    height: 100%; }
   .item-form {
     margin-bottom: 1.6px;
     display: block; }
@@ -615,3 +647,11 @@ body {
     background-color: rgba(31, 31, 31, 0.75); }
   .item:hover {
     transform: scale(1.05); }
+  @media screen and (min-width: 700px) {
+    .item {
+      width: 8.5em;
+      height: 5em;
+      margin: 0 1.5em 1.5em 0;
+      border-radius: 6px; }
+      .item:nth-child(3n) {
+        margin-right: initial; } }

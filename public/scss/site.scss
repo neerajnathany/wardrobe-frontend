@@ -210,7 +210,7 @@ body{
 		margin: 0 1.5em 1.5em 0;
 		border-radius: 0.75*$std-padding;
 		&:nth-child(3n){
-			margin-right: initial;
+			margin-right: 1.5em;
 		}
 	}
 }

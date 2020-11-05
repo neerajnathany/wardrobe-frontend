@@ -389,7 +389,6 @@ textarea {
   z-index: 2;
   border-radius: 12px 12px 0 0;
   padding: 1em;
-  overflow: hidden;
   box-shadow: 2px 4px 18px 0 rgba(0, 0, 0, 0.6);
   cursor: default;
   transition: all 0.08s ease-in-out;
@@ -401,7 +400,7 @@ textarea {
   display: flex; }
   .pop-item-tile {
     width: 25%;
-    border-radius: 8px; }
+    border-radius: 8px 8px 8px 32px; }
   .pop-item-detail {
     width: 75%;
     margin-left: 16px;
@@ -432,12 +431,14 @@ textarea {
     border-radius: 12px;
     bottom: 32px;
     right: 32px;
+    left: auto;
     transform: scale(1, 1);
     transform-origin: 100% 100%; }
     .pop-box.inactive {
       transform: scale(0, 0); }
-  .pop-item-detail {
-    width: 7em; }
+  .pop-item-tile {
+    width: 7em;
+    border-radius: 8px; }
   .pop-item-detail {
     width: auto; } }
 
@@ -654,4 +655,4 @@ body {
       margin: 0 1.5em 1.5em 0;
       border-radius: 6px; }
       .item:nth-child(3n) {
-        margin-right: initial; } }
+        margin-right: 1.5em; } }

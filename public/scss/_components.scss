@@ -21,7 +21,6 @@
         z-index: 2;
         border-radius: 1.5*$std-padding 1.5*$std-padding 0 0;
         padding: 1em;
-        overflow: hidden;
         box-shadow: 2px 4px 18px 0 rgba(0,0,0,0.6);
         cursor: default;
         transition: all 0.08s ease-in-out;
@@ -34,7 +33,7 @@
         display: flex;
         &-tile{
             width: 25%;
-            border-radius: $std-padding;
+            border-radius: $std-padding $std-padding $std-padding 32px;
         }
         &-detail{
             width: 75%;
@@ -79,6 +78,7 @@
             border-radius: 1.5*$std-padding;
             bottom: 4*$std-padding;
             right: 4*$std-padding;
+            left: auto;
             transform: scale(1,1);
             transform-origin: 100% 100%;
             &.inactive{
@@ -86,8 +86,9 @@
             }
         }
         &-item{
-            &-detail{
+            &-tile{
                 width: 7em;
+                border-radius: $std-padding;
             }
             &-detail{
                 width: auto;

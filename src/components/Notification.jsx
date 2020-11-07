@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
+const KEY = 'c9ae2c13187279ee786d6369b8618cb7';
+const CITY = 'hyderabad';
+
 class Notification extends Component {
 	state = { temp: '25', desc: 'wind'};
 	iconUrl = "http://openweathermap.org/img/wn/";
@@ -8,12 +11,18 @@ class Notification extends Component {
 	componentDidMount(){
 		this.getWeather();
 	}
-
+	
 	getWeather = async () => {
         const response = await axios.create({
-			baseURL: 'https://cobalt-backend.herokuapp.com/',
-		}).get('/weather');
-        this.setState({temp: response.data.temp, desc: response.data.desc, icon: response.data.icon});
+            baseURL: 'https://api.openweathermap.org/data/2.5',
+        }).get('/weather',{
+            params:{
+                q: CITY,
+                appid: KEY,
+                units: 'metric',
+            }
+		});
+		this.setState({temp: response.data.main.temp, desc: response.data.weather[0].description, icon: response.data.weather[0].icon});
     }
 
 	render() { 

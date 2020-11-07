@@ -88,7 +88,7 @@ class Wardrobe extends Component {
 
     render() { 
         return ( 
-            <div className="wardrobe">
+        <div className="wardrobe">
             <header className="header">
                 <Link className="header-title" href="/">Cobalt</Link>
                 <span className="header-user">Neeraj Nathany</span>

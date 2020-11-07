@@ -527,13 +527,14 @@ body {
     color: #ffffff66; }
   @media screen and (min-width: 700px) {
     .main {
-      padding: 48px 32px; }
+      padding: 2.75% 0; }
       .main-head {
         margin-bottom: 40px; }
       .main-content {
         vertical-align: top;
         display: inline-block;
-        width: 71%; } }
+        width: 66%;
+        margin-right: 3.25%; } }
 
 .panel {
   display: block;
@@ -596,10 +597,9 @@ body {
   @media screen and (min-width: 700px) {
     .panel {
       display: inline-block;
-      width: 29%;
+      width: 24.75%;
       vertical-align: top;
-      padding: 0 3.5% 0 0;
-      margin-bottom: 0; }
+      margin: 0 3.25% 0 2.75%; }
       .panel-button {
         margin-right: 10px;
         margin-top: 10px; }
@@ -650,9 +650,11 @@ body {
     transform: scale(1.05); }
   @media screen and (min-width: 700px) {
     .item {
-      width: 8.5em;
-      height: 5em;
-      margin: 0 1.5em 1.5em 0;
+      width: 14.58%;
+      height: 5.3em;
+      margin: 0 2.5% 2.35% 0;
       border-radius: 6px; }
       .item:nth-child(3n) {
-        margin-right: 1.5em; } }
+        margin-right: 2.5%; }
+      .item:nth-child(6n) {
+        margin-right: 0; } }

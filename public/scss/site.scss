@@ -50,14 +50,15 @@ body{
 		color: $lighter-white;
 	}
 	@media screen and (min-width: 700px) {		
-		padding: 6*$std-padding 4*$std-padding;
+		padding: 2.75% 0;
 		&-head{
 			margin-bottom: 5*$std-padding;
 		}
 		&-content{
 			vertical-align: top;
 			display: inline-block;
-			width: 71%;
+			width: 66%;
+			margin-right: 3.25%;
 		}
 	}
 }
@@ -137,10 +138,9 @@ body{
 	}
 	@media screen and (min-width: 700px) {
 		display: inline-block;
-		width: 29%;
+		width: 24.75%;
 		vertical-align: top;
-		padding: 0 3.5% 0 0;
-		margin-bottom: 0;
+		margin: 0 3.25% 0 2.75%;
 		&-button{
 			margin-right: 1.25*$std-padding;
 			margin-top: 1.25*$std-padding;
@@ -205,12 +205,15 @@ body{
 		transform: scale(1.05);
 	}
 	@media screen and (min-width: 700px) {
-		width: 8.5em;
-		height: 5em;
-		margin: 0 1.5em 1.5em 0;
+		width: 14.58%;
+		height: 5.3em;
+		margin: 0 2.5% 2.35% 0;
 		border-radius: 0.75*$std-padding;
 		&:nth-child(3n){
-			margin-right: 1.5em;
+			margin-right: 2.5%;
+		}
+		&:nth-child(6n){
+			margin-right: 0;
 		}
 	}
 }

@@ -37,7 +37,7 @@ body{
 		display: flex;
 		align-items: baseline;
 		justify-content: space-between;
-		margin-bottom: 4*$std-padding;
+		margin-bottom: 8%;
 	}
 	&-title{
 		font-size: 2em;
@@ -52,25 +52,25 @@ body{
 	@media screen and (min-width: 700px) {		
 		padding: 2.75% 0;
 		&-head{
-			margin-bottom: 5*$std-padding;
+			margin-bottom: 4%;
 		}
 		&-content{
-			vertical-align: top;
 			display: inline-block;
-			width: 66%;
-			margin-right: 3.25%;
+			width: 67%;
+			vertical-align: top;
+			margin-right: 2.75%;
 		}
 	}
 }
 
 .panel{
 	display: block;
-	margin-bottom: 6*$std-padding;
+	margin-bottom: 12%;
 	&-head{
 		display: flex;
 		align-items: baseline;
 		justify-content: space-between;
-		margin-bottom: 2.5*$std-padding;
+		margin-bottom: 5.5%;
 	}
 	&-title{
 		color: $white;
@@ -103,7 +103,7 @@ body{
 	&-notif{
 		background-color:$black;
 		border: 1px solid $lighter-white;
-		margin-bottom: 4.5*$std-padding;
+		margin-bottom: 9.5%;
 		border-radius: $std-padding;
 		display: flex;
 		align-items: center;
@@ -122,7 +122,7 @@ body{
 	}
 	&-box{
 		background-color: $black;
-		margin-bottom: 2.75*$std-padding;
+		margin-bottom: 5%;
 		border-radius: 1.25*$std-padding;
 		padding: 2.5*$std-padding 2.75*$std-padding 2.75*$std-padding;
 		&-group:not(:last-child){
@@ -140,7 +140,7 @@ body{
 		display: inline-block;
 		width: 24.75%;
 		vertical-align: top;
-		margin: 0 3.25% 0 2.75%;
+		margin: 0 2.75%;
 		&-button{
 			margin-right: 1.25*$std-padding;
 			margin-top: 1.25*$std-padding;
@@ -154,14 +154,13 @@ body{
 }
 
 .group{
-	margin-bottom: 3*$std-padding;
+	margin-bottom: 9%;
 	&-title{
 		color: $white;
 		font-size: 1.2em;
 		font-weight: 700;
-		margin-bottom: 1em;
+		margin-bottom: 4.5%;
 	}
-
 	&.off{
 		background-color: $black;
 		padding: 2em 2em 0;
@@ -170,12 +169,23 @@ body{
 			color: $lighter-white;
 		}
 	}
+	@media screen and (min-width: 700px) {
+		margin-bottom: 4.5%;
+		&-title{
+			margin-bottom: 3.25%;
+		}
+	}
+	@media screen and (min-width: 1000px) {
+		&-title{
+			margin-bottom: 2%;
+		}
+	}
 }
 
 .item{
 	display: inline-block;
 	vertical-align: top;
-	transition: all 0.07s ease-in-out;
+	transition: transform 0.05s ease-in-out;
 	position: relative;
 	cursor: pointer;	
 	border-radius: 0.65*$std-padding;
@@ -183,9 +193,6 @@ body{
 	width: 30%;
 	height: 3.8em;
 	margin: 0 5% 5% 0;
-	&:nth-child(3n){
-		margin-right: 0;
-	}
 	&-tile{
 		width: 100%;
 		height: 100%;
@@ -205,15 +212,29 @@ body{
 		transform: scale(1.05);
 	}
 	@media screen and (min-width: 700px) {
+		width: 30.66%;
+		height: 5.3em;
+		margin: 0 4% 3.5% 0;
+		border-radius: 0.5*$std-padding;
+	}
+	@media screen and (max-width: 999px) {
+		&:nth-child(3n){
+			margin-right: 0;
+		}
+		&:nth-child(3n+1):nth-last-child(-n+3),&:nth-child(3n+1):nth-last-child(-n+3)~*{
+			margin-bottom:0;
+		}
+	}
+	@media screen and (min-width: 1000px) {
 		width: 14.58%;
 		height: 5.3em;
 		margin: 0 2.5% 2.35% 0;
 		border-radius: 0.75*$std-padding;
-		&:nth-child(3n){
-			margin-right: 2.5%;
-		}
 		&:nth-child(6n){
 			margin-right: 0;
+		}
+		&:nth-child(6n+1):nth-last-child(-n+6),&:nth-child(6n+1):nth-last-child(-n+6)~*{
+			margin-bottom:0;
 		}
 	}
 }

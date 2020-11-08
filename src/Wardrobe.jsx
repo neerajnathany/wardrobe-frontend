@@ -155,7 +155,7 @@ class Wardrobe extends Component {
                 </aside>
                 <div className="main-content">
                     <div className="main-head">
-                        <h2 className="main-title">My Wardrobe</h2>
+                        <h2 className="main-title">My Clothes</h2>
                         <span className="main-extra">{this.state.fClothes.length} result(s)</span>
                     </div>
                     {this.state.fClothes.length ? (this.state.categories.map( (each, index) => {

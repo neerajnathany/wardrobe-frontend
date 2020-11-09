@@ -9,7 +9,7 @@ class Home extends Component {
 					<span className="home-name">Cobalt</span>
 					<h1 className="home-title">The complete <span className="home-highlight">wardrobe manager</span> is here🎉</h1>
 				</div>
-				<Link className="home-cta" href='/wardrobe'>Sign in</Link>
+				<Link className="home-cta" href='/clothes'>Sign in</Link>
 			</main>
 		);
 	}

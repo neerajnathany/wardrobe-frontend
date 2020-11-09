@@ -17,9 +17,9 @@ class Wardrobe extends Component {
 
     getList = async () => {
         const response = await axios.create({
-			baseURL: 'https://cobalt-backend.herokuapp.com/',
-        }).get('/');
-        this.setState({ clothes: response.data.filter(e => {return !e.tags.includes('Pseudo Discard')})});
+			baseURL: 'http://localhost:5000',
+        }).get('/wardrobe');
+        this.setState({ clothes: response.data.clothes.filter(e => {return !e.tags.includes('Pseudo Discard')})});
         this.setState({ fClothes: this.state.clothes});
         this.getCategories();
         this.getTags();

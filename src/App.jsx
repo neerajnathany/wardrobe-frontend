@@ -19,8 +19,11 @@ class App extends Component {
         if (this.state.location === '/'){
             return <Home/>
         }
-        else if(this.state.location === '/wardrobe'){
-            return <Wardrobe />
+        else if(this.state.location === '/clothes'){
+            return <Wardrobe view="clothes"/>
+        }
+        else if(this.state.location === '/footwear'){
+            return <Wardrobe view="footwear"/>
         }
     }
 

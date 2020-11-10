@@ -76,7 +76,7 @@ class Clothes extends Component {
 
     render() { 
         return ( 
-            <main className="main">
+            <main className="main" style={this.props.view == 'clothes' ? {display : 'block'} : {display:'none'}}>
                 <aside className="panel">
                     <ViewSelector view={this.props.view} />
                     <div className="panel-head">

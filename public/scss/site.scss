@@ -34,7 +34,9 @@ body{
 			width: 36px;
 		}
 		&-text{
+			display: inline-block;
 			font-size: 0.9em;
+			padding: 1.25*$std-padding 0;
 		}
 	}
 	@media screen and (min-width: 700px) {

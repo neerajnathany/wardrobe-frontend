@@ -25,10 +25,9 @@ class Wardrobe extends Component {
                 <Link className="header-title" href="/">Cobalt</Link>
                 <Notification  />
                 <span className="header-user">Neeraj Nathany</span>
-            </header>            
-            {this.props.view == 'clothes' ? 
-            <Clothes showItem={this.showItem} view={this.props.view}/> :
-            <Footwear showItem={this.showItem} view={this.props.view}/>}
+            </header>             
+            <Clothes showItem={this.showItem} view={this.props.view}/>
+            <Footwear showItem={this.showItem} view={this.props.view}/>
             {this.state.selectedItem ? <ItemView item={this.state.selectedItem} clearItem={this.clearItem}/> : <ItemView class="inactive"/>}
         </div>
         );

@@ -547,7 +547,9 @@ body {
     .header-notif-icon {
       width: 36px; }
     .header-notif-text {
-      font-size: 0.9em; }
+      display: inline-block;
+      font-size: 0.9em;
+      padding: 10px 0; }
   @media screen and (min-width: 700px) {
     .header {
       padding: 6px 20px; }

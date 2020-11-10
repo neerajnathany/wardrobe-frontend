@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import ItemView from './components/ItemView';
-import Link from './components/Link';
+import Notification from './components/Notification';
+import ViewSelector from './components/ViewSelector';
 import Clothes from './views/Clothes';
+import Footwear from './views/Footwear';
+import Link from './components/Link';
+import ItemView from './components/ItemView';
 
 class Wardrobe extends Component {
 
@@ -21,9 +24,13 @@ class Wardrobe extends Component {
         <div className="wardrobe">
             <header className="header">
                 <Link className="header-title" href="/">Cobalt</Link>
+                <Notification  />
                 <span className="header-user">Neeraj Nathany</span>
             </header>
-            <Clothes showItem={this.showItem} test="test"/>
+            <ViewSelector view={this.props.view} />
+            {this.props.view == 'clothes' ? 
+            <Clothes showItem={this.showItem}/> :
+            <Footwear showItem={this.showItem}/>}
             {this.state.selectedItem ? <ItemView item={this.state.selectedItem} clearItem={this.clearItem}/> : <ItemView class="inactive"/>}
         </div>
         );

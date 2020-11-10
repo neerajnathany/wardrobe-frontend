@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Group from '../components/Group';
 import Empty from '../components/Empty';
-import {length, age, cats} from '../constants';
+import {age, fCats} from '../constants';
 import axios from 'axios';
 
-class Clothes extends Component {
+class Footwear extends Component {
     
-    state = { clothes: [], categories: [], tags: [], fClothes: [], tagFilters: [], lenFilter: '', ageFilter: '', formFilter: ''}
+    state = { clothes: [], fClothes: [], categories: [], tags: [], tagFilters: [], ageFilter: '', formFilter: ''}
 
     componentDidMount(){
         this.getClothes();
@@ -14,7 +14,7 @@ class Clothes extends Component {
     
     getClothes = async () => {
         const response = await axios.create({baseURL: 'http://localhost:5000',}).get('/wardrobe');
-        this.setState({ clothes: response.data.clothes.filter(e => {return !e.tags.includes('Pseudo Discard')})});
+        this.setState({ clothes: response.data.footwear.filter(e => {return !e.tags.includes('Pseudo Discard')})});
         this.setState({ fClothes: this.state.clothes});
         this.getCategories();
         this.getTags();
@@ -64,8 +64,7 @@ class Clothes extends Component {
 
     setFilterClothes = (e) => {
         this.setState({fClothes: this.state.clothes.filter(e=>{
-            return (length[e.length].includes(this.state.lenFilter) && 
-            age[e.age].includes(this.state.ageFilter) &&
+            return (age[e.age].includes(this.state.ageFilter) &&
             (this.state.formFilter ? e.form ? e.form.includes(this.state.formFilter) : false : true) &&
             this.state.tagFilters.every(tag=>{
                 return e.tags.includes(tag);
@@ -79,11 +78,11 @@ class Clothes extends Component {
                 <aside className="panel">
                     <div className="panel-head">
                         <h4 className="panel-title">Filters</h4>
-                        {Boolean(this.state.tagFilters.length || this.state.lenFilter || this.state.ageFilter || this.state.formFilter) && 
-                        <button className="panel-extra" onClick={(e)=>this.setState({tagFilters: [], lenFilter: '', ageFilter: '', formFilter: '', fClothes: this.state.clothes})}>Clear all</button>}
+                        {Boolean(this.state.tagFilters.length || this.state.ageFilter || this.state.formFilter) && 
+                        <button className="panel-extra" onClick={(e)=>this.setState({tagFilters: [], ageFilter: '', formFilter: '', fClothes: this.state.clothes})}>Clear all</button>}
                     </div>
                     <div className="panel-box">
-                        {cats.map((each,num) => {
+                        {fCats.map((each,num) => {
                             return (
                                 <div className="panel-box-group" key={num}><h6 className="panel-box-title">{each}</h6>
                                 {this.state.clothes.filter(i=>{
@@ -114,16 +113,6 @@ class Clothes extends Component {
                         })}
                     </div>
                     <div className="panel-box">
-                        <h5 className="panel-box-title">Lengths</h5>
-                        {length.map((each, index) => {
-                            return (
-                                <button className={"panel-button " + (this.state.lenFilter === each)} key={index} onClick={this.onStdFilter} value={each} data-filter="len">
-                                    <span>{each}</span>
-                                </button>
-                            )
-                        })}
-                    </div>
-                    <div className="panel-box">
                         <h5 className="panel-box-title">Age</h5>
                         {age.map((each,index) => {
                             return(
@@ -136,7 +125,7 @@ class Clothes extends Component {
                 </aside>
                 <div className="main-content">
                     <div className="main-head">
-                        <h2 className="main-title">Clothes</h2>
+                        <h2 className="main-title">Footwear</h2>
                         <span className="main-extra">{this.state.fClothes.length} result(s)</span>
                     </div>
                     {this.state.fClothes.length ? (this.state.categories.map( (each, index) => {
@@ -152,18 +141,11 @@ class Clothes extends Component {
                                 showItem = {this.props.showItem}
                             />
                         )
-                    })) : <Empty />}                    
-                    {/* 
-                        <Group category="Discards" class="off" clothes={this.state.clothes.filter(e => {
-                                return e.tags.includes('Pseudo Discard')
-                            })}
-                        />
-                    */}
+                    })) : <Empty />}
                 </div>
             </main>
-
          );
     }
 }
  
-export default Clothes;
+export default Footwear;

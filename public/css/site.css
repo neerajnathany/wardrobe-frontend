@@ -570,7 +570,6 @@ body {
   .panel-notif {
     background-color: #000;
     border: 1px solid #ffffff66;
-    margin-bottom: 9.5%;
     border-radius: 8px;
     display: flex;
     align-items: center;

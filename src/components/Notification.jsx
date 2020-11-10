@@ -27,9 +27,9 @@ class Notification extends Component {
 
 	render() { 
 		return ( 
-			<div className="panel-notif">
-				<img className="panel-notif-icon" src={this.iconUrl + this.state.icon + ".png"} alt={this.state.desc}/>
-				<span className="panel-notif-text"><b>{Math.round(this.state.temp)}°C</b> with <b>{this.state.desc}</b>. Dress accordingly!</span>
+			<div className="header-notif">
+				<img className="header-notif-icon" src={this.iconUrl + this.state.icon + ".png"} alt={this.state.desc}/>
+				<span className="header-notif-text">Prediction of <b>{Math.round(this.state.temp)}°C</b> with <b>{this.state.desc}</b>. Dress accordingly!</span>
 			</div>
 		 );
 	}

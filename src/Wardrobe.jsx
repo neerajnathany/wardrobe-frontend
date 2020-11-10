@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Notification from './components/Notification';
-import ViewSelector from './components/ViewSelector';
 import Clothes from './views/Clothes';
 import Footwear from './views/Footwear';
 import Link from './components/Link';
@@ -26,8 +25,7 @@ class Wardrobe extends Component {
                 <Link className="header-title" href="/">Cobalt</Link>
                 <Notification  />
                 <span className="header-user">Neeraj Nathany</span>
-            </header>
-            <ViewSelector view={this.props.view} />
+            </header>            
             {this.props.view == 'clothes' ? 
             <Clothes showItem={this.showItem} view={this.props.view}/> :
             <Footwear showItem={this.showItem} view={this.props.view}/>}

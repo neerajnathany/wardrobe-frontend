@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ViewSelector from '../components/ViewSelector';
 import Group from '../components/Group';
 import Empty from '../components/Empty';
 import {age, fCats} from '../constants';
@@ -76,6 +77,7 @@ class Footwear extends Component {
         return ( 
             <main className="main">
                 <aside className="panel">
+                    <ViewSelector view={this.props.view} />
                     <div className="panel-head">
                         <h4 className="panel-title">Filters</h4>
                         {Boolean(this.state.tagFilters.length || this.state.ageFilter || this.state.formFilter) && 

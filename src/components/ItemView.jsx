@@ -17,9 +17,9 @@ class ItemView extends Component {
                                         <tr><td>Category:</td><td>{item.category}</td></tr>
                                         {item.form ? <tr><td>Type:</td><td>{item.form}</td></tr> : null}
                                         {item.brand? <tr><td>Brand:</td><td>{item.brand}</td></tr>: null}
-                                        <tr><td>Particulars:</td><td>{item.particulars}</td></tr>
+                                        {item.particulars? <tr><td>Particulars:</td><td>{item.particulars}</td></tr>: null}
                                         {item.collar ? <tr><td>Collar:</td><td>{item.collar}</td></tr> : null}
-                                        <tr><td>Length:</td><td>{length[item.length]}</td></tr>
+                                        {item.length? <tr><td>Length:</td><td>{length[item.length]}</td></tr>: null}
                                         <tr><td>Age:</td><td>{age[item.age]}</td></tr>
                                     </tbody>
                                 </table>

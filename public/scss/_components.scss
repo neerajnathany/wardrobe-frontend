@@ -10,6 +10,45 @@
 	}
 }
 
+.view{
+    &-box{
+        margin-bottom: 8%;
+    }
+    &-button{
+        display: inline-block;
+        text-decoration: none;
+        overflow: hidden;
+        text-align: center;
+        color: inherit;
+        font-weight: 500;
+        width: 48%;
+		background-color: $grey;
+        border-radius: 0.75*$std-padding;
+		text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.8em;
+        padding: 2*$std-padding;
+        vertical-align: middle;
+		&:not(:last-child){
+			margin-right: 4%;
+        }
+        &.true{
+            background-color: $black;
+            color: $cobalt;
+			.view-icon{
+				fill: $cobalt;
+			}
+		}
+		&.false:hover{
+			background-color: $lightest-white;
+		}
+    }
+    &-icon{
+		margin-right: 0.75*$std-padding;
+		vertical-align: bottom;
+	}
+}
+
 .pop{
     &-box{
         position: fixed;
@@ -19,8 +58,8 @@
         left: 0;
         right: 0;
         z-index: 2;
-        border-radius: 1.5*$std-padding 1.5*$std-padding 0 0;
-        padding: 1em;
+        border-radius: 1.25*$std-padding 1.25*$std-padding 0 0;
+        padding: 1em 1.5em 1em 1em;
         box-shadow: 2px 4px 18px 0 rgba(0,0,0,0.6);
         cursor: default;
         transition: all 0.08s ease-in-out;
@@ -33,7 +72,8 @@
         display: flex;
         &-tile{
             width: 25%;
-            border-radius: $std-padding $std-padding $std-padding 32px;
+            border-radius: $std-padding;
+            border-bottom-left-radius: 4*$std-padding;
         }
         &-detail{
             width: 75%;
@@ -75,7 +115,7 @@
     }
     @media screen and (min-width: 700px) {
         &-box{
-            border-radius: 1.5*$std-padding;
+            border-radius: $std-padding;
             bottom: 4*$std-padding;
             right: 4*$std-padding;
             left: auto;
@@ -88,7 +128,7 @@
         &-item{
             &-tile{
                 width: 7em;
-                border-radius: $std-padding;
+                border-radius: 0.75*$std-padding;
             }
             &-detail{
                 width: auto;

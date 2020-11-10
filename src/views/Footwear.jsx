@@ -139,6 +139,7 @@ class Footwear extends Component {
                                     })
                                 }
                                 showItem = {this.props.showItem}
+                                view = {this.props.view}
                             />
                         )
                     })) : <Empty />}

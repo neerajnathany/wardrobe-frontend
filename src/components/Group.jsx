@@ -14,7 +14,9 @@ class Group extends Component {
 					}).map((each,i,self) => {
 						return (
 							<div className="item" key={String(each._id)} onClick = {() => this.props.showItem(each)}>
-								<div className="item-tile" style={{backgroundColor: each.color.pHex}}></div>
+								<div className="item-tile" style={this.props.view == 'clothes' ? {backgroundColor: each.color.pHex}: null}>
+									{each.image ? <img src={each.image} width="100%"></img> : null}
+								</div>
 								{each.brand ? <span className="item-name">{each.brand}</span> : null}
 							</div>
 						)

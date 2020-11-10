@@ -545,7 +545,8 @@ body {
     .header-notif b {
       color: #fff; }
     .header-notif-icon {
-      width: 36px; }
+      width: 36px;
+      vertical-align: bottom; }
     .header-notif-text {
       display: inline-block;
       font-size: 0.9em;

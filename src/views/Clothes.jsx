@@ -6,14 +6,19 @@ import {length, age, cats} from '../constants';
 
 class Clothes extends Component {
     
-    state = { clothes: [], categories: [], tags: [], fClothes: [], tagFilters: [], lenFilter: '', ageFilter: '', formFilter: ''}
+    state = { clothes: [], categories: [], tags: [], fClothes: [], tagFilters: [], lenFilter: '', ageFilter: '', formFilter: '', test:''}
 
     componentDidMount(){
-        console.log(this.props.clothes + ['Mounted']);
-        this.setState({ clothes: this.props.clothes });
-        this.setState({ fClothes: this.props.clothes });
-        this.getCategories();
-        this.getTags();
+        this.getClothes();
+    }
+    
+    getClothes = (props) => {
+        this.setState({test: this.props.test+'now'});
+        this.setState({ clothes: this.props.clothes }, () => {
+            this.setState({ fClothes: this.state.clothes });
+            this.getCategories();
+            this.getTags();
+        });
     }
 
     getCategories = () => {
@@ -71,8 +76,9 @@ class Clothes extends Component {
 
     render() { 
         console.log(this.props.clothes+'Rendered');
-        return ( 
+        return (
             <main className="main">
+                {this.state.lenFilter}
                 <aside className="panel">
                     <Notification  />
                     <div className="panel-head">

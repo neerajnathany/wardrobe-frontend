@@ -13,9 +13,9 @@ class Group extends Component {
 						return b.fitting - a.fitting
 					}).map((each,i,self) => {
 						return (
-							<div className={"item " + (this.props.view == 'clothes' ? 'small':'big')} key={String(each._id)} onClick = {() => this.props.showItem(each)}>
-								<div className="item-tile" style={this.props.view == 'clothes' ? {backgroundColor: each.color.pHex}: null}>
-									{each.image ? <img src={each.image}></img> : null}
+							<div className={"item " + (this.props.view === 'clothes' ? 'small':'big')} key={String(each._id)} onClick = {() => this.props.showItem(each)}>
+								<div className="item-tile" style={this.props.view === 'clothes' ? {backgroundColor: each.color.pHex}: null}>
+									{each.image ? <img alt={each.color.primary} src={each.image}></img> : null}
 								</div>
 								{each.brand ? <span className="item-name">{each.brand}</span> : null}
 							</div>

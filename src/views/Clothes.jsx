@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ViewSelector from '../components/ViewSelector';
 import Group from '../components/Group';
 import Empty from '../components/Empty';
+import Loader from '../components/Loader';
 import {length, age, cats} from '../constants';
 import axios from 'axios';
 
@@ -76,7 +77,7 @@ class Clothes extends Component {
 
     render() { 
         return ( 
-            <main className="main" style={this.props.view == 'clothes' ? {display : 'block'} : {display:'none'}}>
+            <main className="main" style={this.props.view === 'clothes' ? {display : 'block'} : {display:'none'}}>
                 <aside className="panel">
                     <ViewSelector view={this.props.view} />
                     <div className="panel-head">
@@ -141,7 +142,7 @@ class Clothes extends Component {
                         <h2 className="main-title">Clothes</h2>
                         <span className="main-extra">{this.state.fClothes.length} result(s)</span>
                     </div>
-                    {this.state.fClothes.length ? (this.state.categories.map( (each, index) => {
+                    {this.state.clothes.length ? (this.state.fClothes.length ? (this.state.categories.map( (each, index) => {
                         return (
                             <Group 
                                 category={each}
@@ -155,7 +156,7 @@ class Clothes extends Component {
                                 view = {this.props.view}
                             />
                         )
-                    })) : <Empty />}                    
+                    })) : <Empty />) : <Loader/>}                    
                     {/* 
                         <Group category="Discards" class="off" clothes={this.state.clothes.filter(e => {
                                 return e.tags.includes('Pseudo Discard')

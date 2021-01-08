@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ViewSelector from '../components/ViewSelector';
 import Group from '../components/Group';
 import Empty from '../components/Empty';
+import Loader from '../components/Loader';
 import {age, fCats} from '../constants';
 import axios from 'axios';
 
@@ -75,7 +76,7 @@ class Footwear extends Component {
 
     render() { 
         return ( 
-            <main className="main" style={this.props.view == 'footwear' ? {display : 'block'} : {display:'none'}}>
+            <main className="main" style={this.props.view === 'footwear' ? {display : 'block'} : {display:'none'}}>
                 <aside className="panel">
                     <ViewSelector view={this.props.view} />
                     <div className="panel-head">
@@ -130,7 +131,7 @@ class Footwear extends Component {
                         <h2 className="main-title">Footwear</h2>
                         <span className="main-extra">{this.state.fClothes.length} result(s)</span>
                     </div>
-                    {this.state.fClothes.length ? (this.state.categories.map( (each, index) => {
+                    {this.state.clothes.length ? (this.state.fClothes.length ? (this.state.categories.map( (each, index) => {
                         return (
                             <Group 
                                 category={each}
@@ -144,7 +145,7 @@ class Footwear extends Component {
                                 view = {this.props.view}
                             />
                         )
-                    })) : <Empty />}
+                    })) : <Empty />) : <Loader />}
                 </div>
             </main>
          );
